@@ -1,0 +1,53 @@
+body {
+  min-width:300px;
+  width: auto !important;  /* Firefox will set width as auto */
+  width:300px;             /* As IE ignores !important */
+}
+.brkvert {
+  height:50px;
+}
+.vital {
+  padding-left:  2px;
+  padding-right: 2px;
+  padding-top:    10px;
+  padding-bottom: 10px;
+  background-clip: padding-box;
+  border: 2px solid transparent;
+  /* vertical-align: middle; getting that text in the right spot was way harder than i figured! */
+  text-align: center;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  height: 120px;
+}
+.vital div {
+  vertical-align: middle;
+}
+h1 {
+  position: relative;
+  margin-top: 20px;
+}
+
+h1.one {
+  margin-top: 0;
+}
+
+h1.one:before {
+  content: "";
+  display: block;
+  border-top: solid 4px lightgray;
+  width: 100%;
+  height: 1px;
+  position: absolute;
+  top: 50%;
+  z-index: 1; 
+}
+
+h1.one span {
+  color: lightgray;
+  background: #fff;
+  padding: 0 20px;
+  position: relative;
+  z-index: 5;
+}
+

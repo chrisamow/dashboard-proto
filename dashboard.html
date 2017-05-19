@@ -1,0 +1,172 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Dashboard</title>
+  <meta name="description" content="HTML5 page">
+  <meta name="author" content="stuff">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" 
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
+      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" 
+      crossorigin="anonymous" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.11/c3.css" />
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.11/c3.js"></script>
+  <link rel="stylesheet" href="dashboard.css" />
+</head>
+
+<body>
+  <div id="vueapp">
+    <div class="container-fluid">
+
+      <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">{{brand}}</a>
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          </div>
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+              <li><a href="#">Views</a></li>
+              <li><a href="#">Setup</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <!-- major indicators - super responsive - may be more active - eg changing colors -->
+      <div class="row container-fluid" id="vitalindicators">
+        <div class="vital bg-info col-lg-2 col-md-3 col-sm-4 col-xs-6">
+          <vital-display metric="Visits" description="Net visitor traffic count" metricval="43,746"></vital-display></div>
+        <div class="vital bg-info col-lg-2 col-md-3 col-sm-4 col-xs-6">
+          <vital-display metric="Unique Visitors" description="Unique visitors per daily basis" metricval="12,113"></vital-display></div>
+        <div class="vital bg-info col-lg-2 col-md-3 col-sm-4 col-xs-6">
+          <vital-display metric="Page Views" description="it works for a really long long long sentence" metricval="101,925"></vital-display></div>
+        <div class="vital bg-info col-lg-2 col-md-3 col-sm-4 col-xs-6">
+          <vital-display metric="Bounce Rate" description="Percentage leaving without any interaction" metricval="27"></vital-display></div>
+        <div class="vital bg-info col-lg-2 col-md-3 col-sm-4 col-xs-6">
+          <vital-display metric="Time on Site" description="Average time visitor spends on site mm:ss" metricval="09:32"></vital-display></div>
+        <div class="vital bg-info col-lg-2 col-md-3 col-sm-4 col-xs-6">
+          <vital-display metric="Pages per Session" description="Average number of pages visited per session" metricval="7.6"></vital-display></div>
+        <div class="vital bg-info col-lg-2 col-md-3 col-sm-4 col-xs-6">
+          <vital-display metric="Percent Mobile" description="Using device profile data" metricval="39"></vital-display></div>
+        <div class="vital bg-info col-lg-2 col-md-3 col-sm-4 col-xs-6 bg-warning">
+          <vital-display metric="Percent Tablets" description="Using device profile data" metricval="21"></vital-display></div>
+        <div class="vital bg-info col-lg-2 col-md-3 col-sm-4 col-xs-6">
+          <vital-display metric="Percent Desktops" description="Using device profile data" metricval="40"></vital-display></div>
+        <div class="vital bg-info col-lg-2 col-md-3 col-sm-4 col-xs-6">
+          <vital-display metric="Organic traffic" description="Traffic coming from search engines" metricval="37"></vital-display></div>
+        <div class="vital bg-info col-lg-2 col-md-3 col-sm-4 col-xs-6 bg-danger">
+          <vital-display metric="Social traffic" description="Traffic coming from social media platforms" metricval="29"></vital-display></div>
+        <div class="vital bg-info col-lg-2 col-md-3 col-sm-4 col-xs-6">
+          <vital-display metric="ROI" description="Content marketing return" metricval="112"></vital-display></div>
+        <div class="clearfix"></div>
+      </div>
+
+      <div class="form-group">
+        &nbsp;   <!-- vertical whitespace -->
+      </div>
+
+      <h1 id="sectiongoogle" class="one"><span>Google Analytics</span></h1>
+      <div class="accordion panel-group" id="accordion2">
+        <div class="accordion-group panel panel-default">
+          <div class="accordion-heading">
+            <a class="accordion-toggle" data-toggle="collapse" href="#collapseOne">
+              Clicks
+            </a>
+          </div>
+          <div id="collapseOne" class="accordion-body collapse in">
+            <div class="accordion-inner">
+              <c3-chart></c3-chart>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-group panel panel-default">
+          <div class="accordion-heading">
+            <a class="accordion-toggle" data-toggle="collapse" href="#collapseTwo">
+              PostClicks
+            </a>
+          </div>
+          <div id="collapseTwo" class="accordion-body collapse">
+            <div class="accordion-inner">
+              <c3-bar></c3-bar>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-group panel panel-default">
+          <div class="accordion-heading">
+            <a class="accordion-toggle" data-toggle="collapse" href="#collapseThree">
+              ROI
+            </a>
+          </div>
+          <div id="collapseThree" class="accordion-body collapse">
+            <div class="accordion-inner">
+              <c3-gauge></c3-gauge>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h1 id="sectionheap" class="one"><span>Heap Analytics</span></h1>
+      <div class="accordion panel-group" id="accordion2">
+        <div class="accordion-group panel panel-default">
+          <div class="accordion-heading">
+            <a class="accordion-toggle" data-toggle="collapse" href="#collapseOneA">
+              Clicks
+            </a>
+          </div>
+          <div id="collapseOneA" class="accordion-body collapse in">
+            <div class="accordion-inner">
+              <c3-chart></c3-chart>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-group panel panel-default">
+          <div class="accordion-heading">
+            <a class="accordion-toggle" data-toggle="collapse" href="#collapseTwoA">
+              PostClicks
+            </a>
+          </div>
+          <div id="collapseTwoA" class="accordion-body collapse">
+            <div class="accordion-inner">
+              <c3-bar></c3-bar>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-group panel panel-default">
+          <div class="accordion-heading">
+            <a class="accordion-toggle" data-toggle="collapse" href="#collapseThreeA">
+              ROI
+            </a>
+          </div>
+          <div id="collapseThreeA" class="accordion-body collapse">
+            <div class="accordion-inner">
+              <c3-gauge></c3-gauge>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div> <!-- vueapp -->
+
+
+  <script type="text/javascript" src="https://unpkg.com/vue@2.2.6"></script>
+  <script type="text/javascript" src="dashboard.js"></script>
+
+</body>
+</html>
+
