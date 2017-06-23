@@ -143,7 +143,7 @@ Vue.component('vital-display', {
 new Vue({
   el: '#vueapp',
   data: {
-    brand: 'SHOWROOMLogic'
+    brand: 'AcmeCorp'
   },
   methods: {
     humanizeURL: function (url) {
